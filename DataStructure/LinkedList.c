@@ -17,9 +17,9 @@ typedef ListNode *LinkList;
  * 生成新节点
  * @return 新节点
  */
-ListNode *newNode() {
+ListNode *makeNewNode() {
     ListNode *pNode = (ListNode *) malloc(sizeof(ListNode));
-    if (pNode){
+    if (pNode) {
         return pNode;
     }
     printf("节点申请失败");
@@ -36,7 +36,7 @@ LinkList createListF() {
     LinkList pHead = NULL;
     printf("输入链表各个节点的顺序\n");
     while ((ch = getchar()) && ch != '\n') {
-        pNode = newNode();
+        pNode = makeNewNode();
         if (pNode == NULL) {
             return NULL;
         }
@@ -48,20 +48,20 @@ LinkList createListF() {
 }
 
 /***
- * 尾插法法建立单链表
+ * 尾插法建立单链表
  * @return 单链表
  */
 LinkList createListE() {
     Data ch;
     ListNode *pNode, *pEndNode;
-    LinkList linkHead = newNode();
+    LinkList linkHead = makeNewNode();
     if (linkHead == NULL) {
         return NULL;
     }
     pEndNode = linkHead;
     printf("请输入链表各节点数据\n");
     while ((ch = getchar()) && ch != '\n') {
-        pNode = newNode();
+        pNode = makeNewNode();
         if (pNode == NULL) {
             return NULL;
         }
@@ -100,10 +100,10 @@ ListNode *getNodeN(LinkList head, int n) {
  * @param data 值
  * @return 节点
  */
-ListNode *locateNode(LinkList list, Data data){
+ListNode *locateNode(LinkList list, Data data) {
     ListNode *pNode = list->next;
-    while (pNode&& pNode->data!=data){
-        pNode = pNode ->next;
+    while (pNode && pNode->data != data) {
+        pNode = pNode->next;
     }
     return pNode;
 }
@@ -123,7 +123,31 @@ int getListLength(LinkList list) {
     return length;
 }
 
+/***
+ * 插入新节点到n
+ * @param list 链表
+ * @param data 插入的数据
+ * @param n 位置
+ * @return 成功则返回插入的位置 @param n
+ */
+int insertList(LinkList list, Data data, int n) {
+    ListNode *pNode, *newNode;
+    pNode = getNodeN(list, n - 1);
+    if (pNode == NULL) {
+        printf("the node %d not found", n - 1);
+        return -1;
+    }
+    newNode = makeNewNode();
+    if (newNode == NULL) {
+        return -1;
+    }
+    newNode->data = data;
+    newNode->next = pNode->next;
+    pNode->next = newNode;
+    return n;
+}
+
 
 int main() {
-    
+
 }
