@@ -16,8 +16,8 @@ typedef struct ListNode {
 typedef Node *LinkList;
 
 /***
- * ç”Ÿæˆæ–°èŠ‚ç‚¹
- * @return æ–°èŠ‚ç‚¹
+ * Éú³ÉÐÂ½Úµã
+ * @return ÐÂ½Úµã
  */
 Node *makeNewNode() {
     Node *pNode = (Node *) malloc(sizeof(Node));
@@ -29,40 +29,40 @@ Node *makeNewNode() {
 }
 
 /***
- * å¤´æ’æ³•å»ºç«‹å•é“¾è¡¨
- * @return head å•é“¾è¡¨
+ * Í·²å·¨½¨Á¢µ¥Á´±í
+ * @return head µ¥Á´±í
  */
- //TODO bug
 LinkList createListF() {
     Data ch;
-    Node *pNode;
-    LinkList pHead = NULL;
-    printf("è¾“å…¥é“¾è¡¨å„ä¸ªèŠ‚ç‚¹çš„æ•°æ®(char)\n");
-    while ((ch = getchar()) && ch != '\n') {
+    LinkList pHead = makeNewNode();
+    Node *pNode,*pPrevNode = NULL;
+    printf("ÊäÈëÁ´±í¸÷¸ö½ÚµãµÄÊý¾Ý(char)Í·²å·¨\n");
+    while ((ch = getchar()) && ch != '\n'){
         pNode = makeNewNode();
         if (pNode == NULL) {
             return NULL;
         }
         pNode->data = ch;
-        pNode->next = pHead;
-        pHead = pNode;
+        pNode->next = pPrevNode;
+        pPrevNode = pNode;
+        pHead->next = pNode;
     }
     return pHead;
 }
 
 /***
- * å°¾æ’æ³•å»ºç«‹å•é“¾è¡¨
- * @return å•é“¾è¡¨
+ * Î²²å·¨½¨Á¢µ¥Á´±í
+ * @return µ¥Á´±í
  */
 LinkList createListE() {
     Data ch;
     Node *pNode, *pEndNode;
-    LinkList linkHead = makeNewNode();
-    if (linkHead == NULL) {
+    LinkList pHead = makeNewNode();
+    if (pHead == NULL) {
         return NULL;
     }
-    pEndNode = linkHead;
-    printf("è¾“å…¥é“¾è¡¨å„ä¸ªèŠ‚ç‚¹çš„æ•°æ®(char)\n");
+    pEndNode = pHead;
+    printf("ÊäÈëÁ´±í¸÷¸ö½ÚµãµÄÊý¾Ý(char)Î²²å·¨\n");
     while ((ch = getchar()) && ch != '\n') {
         pNode = makeNewNode();
         if (pNode == NULL) {
@@ -74,14 +74,14 @@ LinkList createListE() {
 
     }
     pEndNode->next = NULL;
-    return linkHead;
+    return pHead;
 }
 
 /***
- * æŸ¥æ‰¾ç¬¬Nä¸ªèŠ‚ç‚¹
- * @param head é“¾è¡¨çš„å¤´èŠ‚ç‚¹
+ * ²éÕÒµÚN¸ö½Úµã
+ * @param head Á´±íµÄÍ·½Úµã
  * @param n
- * @return æ‰¾åˆ°çš„èŠ‚ç‚¹
+ * @return ÕÒµ½µÄ½Úµã
  */
 Node *getNodeN(LinkList head, int n) {
     int count = 1;
@@ -98,10 +98,10 @@ Node *getNodeN(LinkList head, int n) {
 }
 
 /***
- * æŒ‰å€¼æŸ¥æ‰¾èŠ‚ç‚¹
- * @param list é“¾è¡¨
- * @param data å€¼
- * @return èŠ‚ç‚¹
+ * °´Öµ²éÕÒ½Úµã
+ * @param list Á´±í
+ * @param data Öµ
+ * @return ½Úµã
  */
 Node *locateNode(LinkList list, Data data) {
     Node *pNode = list->next;
@@ -111,11 +111,17 @@ Node *locateNode(LinkList list, Data data) {
     return pNode;
 }
 
-int locateNodePos(LinkList list, Data data){
+/***
+ * °´Öµ²éÕÒ³ödataËùÔÚÎ»ÖÃ
+ * @param list
+ * @param data
+ * @return Î»ÖÃ
+ */
+int locateNodePos(LinkList list, Data data) {
     Node *pNode = list->next;
     int i = 0;
     while (pNode && pNode->data != data) {
-        i ++;
+        i++;
         pNode = pNode->next;
 
     }
@@ -123,9 +129,9 @@ int locateNodePos(LinkList list, Data data){
 }
 
 /***
- * èŽ·å–é“¾è¡¨é•¿åº¦
- * @param list å¸¦å¤´èŠ‚ç‚¹çš„å•é“¾è¡¨
- * @return é•¿åº¦
+ * »ñÈ¡Á´±í³¤¶È
+ * @param list ´øÍ·½ÚµãµÄµ¥Á´±í
+ * @return ³¤¶È
  */
 int getListLength(LinkList list) {
     Node *node = list->next;
@@ -138,11 +144,11 @@ int getListLength(LinkList list) {
 }
 
 /***
- * æ’å…¥æ–°èŠ‚ç‚¹åˆ° n
- * @param list é“¾è¡¨
- * @param data æ’å…¥çš„æ•°æ®
+ * ²åÈëÐÂ½Úµãµ½ n
+ * @param list Á´±í
+ * @param data ²åÈëµÄÊý¾Ý
  * @param n
- * @return æˆåŠŸåˆ™è¿”å›žæ’å…¥çš„ä½ç½® @param n
+ * @return ³É¹¦Ôò·µ»Ø²åÈëµÄÎ»ÖÃ @param n
  */
 int insertNode(LinkList list, Data data, int n) {
     Node *pPrevNode, *pNewNode;
@@ -162,12 +168,12 @@ int insertNode(LinkList list, Data data, int n) {
 }
 
 /***
- * åˆ é™¤ç¬¬ n ä¸ªèŠ‚ç‚¹
- * @param list é“¾è¡¨
+ * É¾³ýµÚ n ¸ö½Úµã
+ * @param list Á´±í
  * @param n
- * @return æˆåŠŸåˆ™è¿”å›žåˆ é™¤çš„ä½ç½® @param n
+ * @return ³É¹¦Ôò·µ»ØÉ¾³ýµÄÎ»ÖÃ @param n
  */
-int removeNodeN(LinkList list, int n){
+int removeNodeN(LinkList list, int n) {
     Node *pTargetNode, *pPrevNode;
     pPrevNode = getNodeN(list, n - 1);
     if (pPrevNode == NULL) {
@@ -175,21 +181,21 @@ int removeNodeN(LinkList list, int n){
         return FAILED;
     }
     pTargetNode = pPrevNode->next;
-    //è·³è¿‡
+    //Ìø¹ý
     pPrevNode->next = pTargetNode->next;
-    //é‡Šæ”¾
+    //ÊÍ·Å
     free(pTargetNode);
     return n;
 }
 
 /***
- * é”€æ¯é“¾è¡¨
- * @param head é“¾è¡¨ï¼ˆå¤´èŠ‚ç‚¹ï¼‰
+ * Ïú»ÙÁ´±í
+ * @param head Á´±í£¨Í·½Úµã£©
  */
-void destroyList(LinkList head){
-     Node *pA, *pB;
-     pA = (Node *)head;
-    while(pA){
+void destroyList(LinkList head) {
+    Node *pA, *pB;
+    pA = (Node *) head;
+    while (pA) {
         pB = pA->next;
         free(pA);
         pA = pB;
@@ -197,11 +203,11 @@ void destroyList(LinkList head){
     head = NULL;
 }
 
-void printList(LinkList list){
-    Node *node = list ->next;
+void printList(LinkList list) {
+    Node *node = list->next;
     printf("LinkedList:");
-    while (node){
-        printf(" %c",node->data);
+    while (node) {
+        printf(" %c", node->data);
         node = node->next;
     }
     printf(";\n");
@@ -209,20 +215,9 @@ void printList(LinkList list){
 }
 
 int main() {
-    LinkList l = createListE();
-    printList(l);
-    printf("%d\n",getListLength(l));
-//    Node *node = getNodeN(linkList, 3);
-//    printf("3 is %c",node->data);
-    insertNode(l, 's', 2);
-    printList(l);
-    Node *node;
-    node = locateNode(l, '-');
-    if (node){
-        printf("%c",node->data);
-    }
-    removeNodeN(l, 3);
-    printList(l);
+    LinkList l2 = createListF();
+    printList(l2);
+
 //    destroyList(l);
 //    printList(l);
 
