@@ -192,6 +192,7 @@ int removeNodeN(LinkList list, int n) {
  * 销毁链表
  * @param head 链表（头节点）
  */
+
 void destroyList(LinkList head) {
     Node *pA, *pB;
     pA = (Node *) head;
@@ -203,7 +204,12 @@ void destroyList(LinkList head) {
     head = NULL;
 }
 
+/***
+ * 打印list
+ * @param list 链表
+ */
 void printList(LinkList list) {
+
     Node *node = list->next;
     printf("LinkedList:");
     while (node) {
