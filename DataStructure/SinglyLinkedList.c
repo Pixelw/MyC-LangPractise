@@ -84,8 +84,8 @@ LinkList createListE() {
  * @return 找到的节点
  */
 Node *getNodeN(LinkList head, int n) {
-    int count = 1;
-    Node *pNode = head->next;
+    int count = 0;
+    Node *pNode = head;
     while (pNode && count < n) {
         pNode = pNode->next;
         count++;
@@ -220,10 +220,10 @@ void printList(LinkList list) {
 
 }
 
+//TODO playground
 int main() {
     LinkList l2 = createListF();
     printList(l2);
-
 //    destroyList(l);
 //    printList(l);
 
