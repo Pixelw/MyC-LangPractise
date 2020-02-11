@@ -3,4 +3,4 @@ project(DataStructure C)
 
 set(CMAKE_C_STANDARD 99)
 
-add_executable(DataStructure DataStructure/ArraySeqList.c)
+add_executable(DataStructure DataStructure/SeqList.c)
