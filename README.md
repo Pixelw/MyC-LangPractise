@@ -7,4 +7,3 @@
     1. 顺序表
     2. 带头节点的单链表
 2. 乱写的东西
-- something changed here
