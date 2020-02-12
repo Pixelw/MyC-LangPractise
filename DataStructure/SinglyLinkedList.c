@@ -50,6 +50,8 @@ LinkList createListF() {
     return pHead;
 }
 
+
+
 /***
  * 尾插法建立单链表
  * @return 单链表

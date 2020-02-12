@@ -13,6 +13,11 @@ typedef struct dlnode {
 
 typedef DLNode *DLinkList;
 
+
+/**
+ * 建立新节点
+ * @return 节点
+ */
 DLinkList makeNewDLNode() {
     DLNode *pNode = (DLNode *) malloc(sizeof(DLNode));
     if (pNode) {
@@ -22,6 +27,11 @@ DLinkList makeNewDLNode() {
     return NULL;
 }
 
+
+/**
+ * 创建列表（尾插法）
+ * @return
+ */
 DLinkList createDListE() {
     Data ch;
     DLNode *pNode, *pEndNode;
@@ -50,6 +60,12 @@ DLinkList createDListE() {
     return pHead;
 }
 
+/**
+ * 取得第N个节点
+ * @param list
+ * @param n
+ * @return 节点
+ */
 DLNode *getNodeN(DLinkList list, int n) {
     int count = 0;
     DLNode *pNode = list;
@@ -64,6 +80,14 @@ DLNode *getNodeN(DLinkList list, int n) {
     }
 }
 
+
+/**
+ * 插入节点到N
+ * @param list
+ * @param data 数据（char）
+ * @param n
+ * @return
+ */
 int insertNode(DLinkList list, Data data, int n) {
     DLNode *pNewNode = makeNewDLNode(), *pPrevNode;
     pPrevNode = getNodeN(list, n - 1);
@@ -81,6 +105,11 @@ int insertNode(DLinkList list, Data data, int n) {
     return n;
 }
 
+/**
+ * 删除第N节点
+ * @param list
+ * @param n
+ */
 void deleteNode(DLinkList list, int n) {
     DLNode *pNode = getNodeN(list, n);
     if (!pNode->prior) {
@@ -93,6 +122,10 @@ void deleteNode(DLinkList list, int n) {
     free(pNode);
 }
 
+/**
+ * 答应整个链表
+ * @param list
+ */
 void printList(DLinkList list) {
     DLNode *node = list->next;
     printf("DoublyLinkedList:");
