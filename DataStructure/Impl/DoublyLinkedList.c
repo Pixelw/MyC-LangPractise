@@ -2,22 +2,10 @@
 // Created by carl- on 2020/2/11.
 //
 
-#include "stdio.h"
-#include "stdlib.h"
+#include <stdio.h>
+#include <stdlib.h>
+#include "../DoublyLinkedList.h"
 
-typedef char Data;
-typedef struct dlnode {
-    Data data;
-    struct dlnode *prior, *next;
-} DLNode;
-
-typedef DLNode *DLinkList;
-
-
-/**
- * 建立新节点
- * @return 节点
- */
 DLinkList makeNewDLNode() {
     DLNode *pNode = (DLNode *) malloc(sizeof(DLNode));
     if (pNode) {
@@ -27,11 +15,6 @@ DLinkList makeNewDLNode() {
     return NULL;
 }
 
-
-/**
- * 创建列表（尾插法）
- * @return
- */
 DLinkList createDListE() {
     Data ch;
     DLNode *pNode, *pEndNode;
@@ -60,13 +43,7 @@ DLinkList createDListE() {
     return pHead;
 }
 
-/**
- * 取得第N个节点
- * @param list
- * @param n
- * @return 节点
- */
-DLNode *getNodeN(DLinkList list, int n) {
+DLNode *getDLNodeN(DLinkList list, int n) {
     int count = 0;
     DLNode *pNode = list;
     while (pNode && count < n) {
@@ -80,17 +57,9 @@ DLNode *getNodeN(DLinkList list, int n) {
     }
 }
 
-
-/**
- * 插入节点到N
- * @param list
- * @param data 数据（char）
- * @param n
- * @return
- */
-int insertNode(DLinkList list, Data data, int n) {
+int insertDLNode(DLinkList list, Data data, int n) {
     DLNode *pNewNode = makeNewDLNode(), *pPrevNode;
-    pPrevNode = getNodeN(list, n - 1);
+    pPrevNode = getDLNodeN(list, n - 1);
     if (!pPrevNode) {
         printf("the previous node of node_%d not found\n", n);
         return -1;
@@ -105,13 +74,8 @@ int insertNode(DLinkList list, Data data, int n) {
     return n;
 }
 
-/**
- * 删除第N节点
- * @param list
- * @param n
- */
-void deleteNode(DLinkList list, int n) {
-    DLNode *pNode = getNodeN(list, n);
+void deleteDLNode(DLinkList list, int n) {
+    DLNode *pNode = getDLNodeN(list, n);
     if (!pNode->prior) {
         list->next = pNode->next;
     }
@@ -122,11 +86,7 @@ void deleteNode(DLinkList list, int n) {
     free(pNode);
 }
 
-/**
- * 答应整个链表
- * @param list
- */
-void printList(DLinkList list) {
+void printDLList(DLinkList list) {
     DLNode *node = list->next;
     printf("DoublyLinkedList:");
     while (node) {
@@ -134,14 +94,5 @@ void printList(DLinkList list) {
         node = node->next;
     }
     printf(";\n");
-}
-
-
-int main() {
-    DLinkList list = createDListE();
-    printList(list);
-    deleteNode(list, 1);
-    printList(list);
-
 }
 
