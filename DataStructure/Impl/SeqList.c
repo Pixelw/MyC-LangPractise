@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <malloc.h>
 #include "../SeqList.h"
+#include "../../Util/Status.h"
 
 SeqList initSeqList() {
     int size = LIST_SIZE * sizeof(Data);
@@ -13,7 +14,7 @@ SeqList initSeqList() {
 int extendList(SeqList *list) {
     Data *newBase = (Data *) realloc(list->base, (list->size + LIST_SIZE * sizeof(Data)));
     if (!newBase) {
-        return -1;
+        return ERROR;
     }
     list->base = newBase;
     list->size += LIST_SIZE;
@@ -28,7 +29,7 @@ int reInputList(SeqList *l) {
     while ((ch = getchar()) && ch != '\n') {
         if (l->length * sizeof(ch) >= l->size) {
             if (extendList(l) < 0) {
-                return -1;
+                return ERROR;
             }
         }
         *(l->base + position) = ch;
@@ -40,12 +41,12 @@ int reInputList(SeqList *l) {
 
 int insertList(SeqList *list, Data data, int position) {
     if (position < 0 || position > list->length + 1) {
-        return -1;
+        return ERROR;
     }
     //如果顺序表空间不够，扩充新的空间
     if (list->length * sizeof(data) >= list->size) {
         if (extendList(list) <= 0) {
-            return -1;
+            return ERROR;
         }
     }
     //插入后移
@@ -61,7 +62,7 @@ int insertList(SeqList *list, Data data, int position) {
 
 int deleteList(SeqList *l, int n) {
     if (n < 1 || n > l->length || n > l->size) {
-        return -1;
+        return ERROR;
     }
     Data *p;
     for (p = l->base + n - 1; p < l->base + l->length; p++) {

@@ -4,6 +4,7 @@
 
 #include <stdio.h>
 #include "../SeqStack.h"
+#include "../../Util/Status.h"
 
 void initStack(SeqStack *s) {
     s->top = -1;
@@ -19,7 +20,7 @@ int isStackFull(SeqStack *s) {
 
 Data getTop(SeqStack *s) {
     if (isStackEmpty(s)) {
-        return -1;
+        return ERROR;
     }
     Data data = s->data[s->top - 1];
     return data;
@@ -27,20 +28,26 @@ Data getTop(SeqStack *s) {
 
 int push(SeqStack *s, Data data) {
     if (isStackFull(s)) {
-        return -1;
+        return ERROR;
     }
     s->data[++s->top] = data;
-    return 1;
-
+    return s->top;
 }
 
-int pop(SeqStack *s, Data *e) {
+//int pop(SeqStack *s, Data *data) {
+//    if (isStackEmpty(s)) {
+//        return ERROR;
+//    }
+//    s->top--;
+//    *data = s->data[s->top];
+//    return 1;
+//}
+int pop(SeqStack *s) {
     if (isStackEmpty(s)) {
-        return -1;
+        return ERROR;
     }
     s->top--;
-    *e = s->data[s->top];
-    return 1;
+    return s->top;
 }
 
 int getLength(SeqStack *s) {
@@ -59,3 +66,4 @@ void showStack(SeqStack *s) {
         }
     }
 }
+

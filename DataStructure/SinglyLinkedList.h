@@ -5,8 +5,6 @@
 #ifndef DATASTRUCTURE_SINGLYLINKEDLIST_H
 #define DATASTRUCTURE_SINGLYLINKEDLIST_H
 
-#define FAILED -1
-
 typedef char Data;
 typedef struct ListNode {
     Data data;
