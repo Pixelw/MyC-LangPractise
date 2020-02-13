@@ -4,7 +4,7 @@
 
 #include <stdio.h>
 #include "../SeqStack.h"
-#include "../../Util/Status.h"
+#include "../../Util/status.h"
 
 void initStack(SeqStack *s) {
     s->top = -1;

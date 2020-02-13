@@ -5,7 +5,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "../DoublyLinkedList.h"
-#include "../../Util/Status.h"
+#include "../../Util/status.h"
 
 DLinkList makeNewDLNode() {
     DLNode *pNode = (DLNode *) malloc(sizeof(DLNode));

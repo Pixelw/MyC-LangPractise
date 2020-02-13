@@ -5,18 +5,18 @@
 #ifndef DATASTRUCTURE_STATUS_H
 #define DATASTRUCTURE_STATUS_H
 
-#define OK onSuccess()  //0
-#define ERROR onError() //-1
-#define OVERFLOW onOverflow() //-2
+#define OK on_success()  //0
+#define ERROR on_error() //-1
+#define OVERFLOW on_overflow() //-2
 
-int onSuccess();
+int on_success();
 
 /**
  * 在return ERROR时，输出错误，换用红色字体(windows)
  * @return -1
  */
-int onError();
+int on_error();
 
-int onOverflow();
+int on_overflow();
 
 #endif //DATASTRUCTURE_STATUS_H

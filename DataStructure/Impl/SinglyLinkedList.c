@@ -5,7 +5,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "../SinglyLinkedList.h"
-#include "../../Util/Status.h"
+#include "../../Util/status.h"
 
 Node *makeNewNode() {
     Node *pNode = (Node *) malloc(sizeof(Node));

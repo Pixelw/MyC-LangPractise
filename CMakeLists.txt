@@ -12,4 +12,4 @@ add_executable(DataStructure
         DataStructure/Impl/SinglyLinkedList.c
         DataStructure/DoublyLinkedList.h
         DataStructure/SeqList.h
-        DataStructure/SinglyLinkedList.h Util/Status.h Util/Status.c)
+        DataStructure/SinglyLinkedList.h Util/status.h Util/status.c Util/printincolor.c Util/printincolor.h)
