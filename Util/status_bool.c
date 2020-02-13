@@ -3,20 +3,21 @@
 //
 
 #include <stdio.h>
-#include "printincolor.h"
+#include "consoleutil.h"
+#include "status_bool.h"
 
 int on_success() {
-    return 0;
+    return OK;
 }
 
 int on_error() {
     enum console_color red = Red;
     printf_in_color_win(red, "error occurred\n");
-    return -1;
+    return ERROR;
 }
 
 int on_overflow() {
     printf("overflowed\n");
-    return -2;
+    return OVERFLOW;
 }
 

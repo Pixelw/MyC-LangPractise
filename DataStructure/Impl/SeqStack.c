@@ -4,62 +4,66 @@
 
 #include <stdio.h>
 #include "../SeqStack.h"
-#include "../../Util/status.h"
+#include "../../Util/status_bool.h"
 
-void initStack(SeqStack *s) {
+void initSStack(SeqStack *s) {
     s->top = -1;
 }
 
-int isStackEmpty(SeqStack *s) {
+int isSStackEmpty(SeqStack *s) {
     return s->top == -1;
 }
 
-int isStackFull(SeqStack *s) {
+int isSStackFull(SeqStack *s) {
     return s->top == STACK_SIZE - 1;
 }
 
-Data getTop(SeqStack *s) {
-    if (isStackEmpty(s)) {
-        return ERROR;
+Data getSStackTop(SeqStack *s) {
+    if (isSStackEmpty(s)) {
+        printf("empty stack\n");
+        return _ERROR;
     }
     Data data = s->data[s->top - 1];
     return data;
 }
 
-int push(SeqStack *s, Data data) {
-    if (isStackFull(s)) {
-        return ERROR;
+int pushSS(SeqStack *s, Data data) {
+    if (isSStackFull(s)) {
+        printf("full stack\n");
+        return _ERROR;
     }
     s->data[++s->top] = data;
     return s->top;
 }
 
 //int pop(SeqStack *s, Data *data) {
-//    if (isStackEmpty(s)) {
+//    if (isSStackEmpty(s)) {
 //        return ERROR;
 //    }
 //    s->top--;
 //    *data = s->data[s->top];
 //    return 1;
 //}
-int pop(SeqStack *s) {
-    if (isStackEmpty(s)) {
-        return ERROR;
+Data popSS(SeqStack *s) {
+    if (isSStackEmpty(s)) {
+        printf("empty stack\n");
+        return _ERROR;
     }
+    Data data = s->top;
     s->top--;
+    return data;
+}
+
+int getSSLength(SeqStack *s) {
     return s->top;
 }
 
-int getLength(SeqStack *s) {
-    return s->top;
-}
-
-void clearStack(SeqStack *s) {
+void clearSStack(SeqStack *s) {
     s->top = -1;
 }
 
-void showStack(SeqStack *s) {
-    if (!isStackEmpty(s)) {
+void showSStack(SeqStack *s) {
+    if (!isSStackEmpty(s)) {
         printf("Stack:");
         for (int i = 0; i <= s->top; i++) {
             printf(" %c", s->data[i]);

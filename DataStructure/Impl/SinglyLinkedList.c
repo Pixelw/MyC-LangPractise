@@ -5,7 +5,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "../SinglyLinkedList.h"
-#include "../../Util/status.h"
+#include "../../Util/status_bool.h"
 
 Node *makeNewNode() {
     Node *pNode = (Node *) malloc(sizeof(Node));
@@ -76,11 +76,11 @@ int insertNode(LinkList list, Data data, int n) {
     pPrevNode = getNodeN(list, n - 1);
     if (pPrevNode == NULL) {
         printf("the previous node of node_%d not found\n", n);
-        return ERROR;
+        return _ERROR;
     }
     pNewNode = makeNewNode();
     if (pNewNode == NULL) {
-        return ERROR;
+        return _ERROR;
     }
     pNewNode->data = data;
     pNewNode->next = pPrevNode->next;
@@ -101,7 +101,7 @@ int removeNodeN(LinkList list, int n) {
     pPrevNode = getNodeN(list, n - 1);
     if (pPrevNode == NULL) {
         printf("the previous node of node_%d not found\n", n);
-        return ERROR;
+        return _ERROR;
     }
     pTargetNode = pPrevNode->next;
     //跳过

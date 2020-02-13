@@ -5,7 +5,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "../DoublyLinkedList.h"
-#include "../../Util/status.h"
+#include "../../Util/status_bool.h"
 
 DLinkList makeNewDLNode() {
     DLNode *pNode = (DLNode *) malloc(sizeof(DLNode));
@@ -63,7 +63,7 @@ int insertDLNode(DLinkList list, Data data, int n) {
     pPrevNode = getDLNodeN(list, n - 1);
     if (!pPrevNode) {
         printf("the previous node of node_%d not found\n", n);
-        return ERROR;
+        return _ERROR;
     }
     pNewNode->data = data;
     pNewNode->next = pPrevNode->next;

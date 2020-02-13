@@ -16,35 +16,35 @@ typedef struct {
  * 初始化栈
  * @param s 栈
  */
-void initStack(SeqStack *s);
+void initSStack(SeqStack *s);
 /***
  * 判断栈是否空
  * @param s 栈
  * @return 是返回1，不是返回0
  */
-int isStackEmpty(SeqStack *s);
+int isSStackEmpty(SeqStack *s);
 
 /**
  * 判断栈是否满
  * @param s 栈
  * @return 是返回1，不是返回0
  */
-int isStackFull(SeqStack *s);
+int isSStackFull(SeqStack *s);
 
 /**
  * 获取栈顶元素
  * @param s 栈
  * @return 返回数据
  */
-Data getTop(SeqStack *s);
+Data getSStackTop(SeqStack *s);
 
 /**
  * 元素进栈
  * @param s 栈
  * @param data 入栈的数据
  * @return 成功返回1，失败返回-1
- */
-int push(SeqStack *s, Data data);
+*/
+int pushSS(SeqStack *s, Data data);
 
 
 //int pop(SeqStack *s, Data *data);
@@ -52,27 +52,27 @@ int push(SeqStack *s, Data data);
 /**
  * 元素出栈
  * @param s 栈
- * @return
+ * @return 出栈的元素
  */
-int pop(SeqStack *s);
+Data popSS(SeqStack *s);
 
 /**
  * 获取栈长度
  * @param s
  * @return 长度
  */
-int getLength(SeqStack *s);
+int getSSLength(SeqStack *s);
 
 /**
  * 清除栈（重设top值）
  * @param s
  */
-void clearStack(SeqStack *s);
+void clearSStack(SeqStack *s);
 
 /**
  * 打印栈
  * @param s
  */
-void showStack(SeqStack *s);
+void showSStack(SeqStack *s);
 
 #endif
