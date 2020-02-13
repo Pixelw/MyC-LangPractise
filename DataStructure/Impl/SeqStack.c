@@ -48,7 +48,7 @@ int getLength(SeqStack *s) {
 }
 
 void clearStack(SeqStack *s) {
-    s->top = 0;
+    s->top = -1;
 }
 
 void showStack(SeqStack *s) {
