@@ -3,6 +3,7 @@
 //
 
 #ifndef DATASTRUCTURE_LINKEDSTACK_H
+#define DATASTRUCTURE_LINKEDSTACK_H
 
 typedef char Data;
 typedef struct stacknode{
@@ -59,7 +60,5 @@ void showLStack(LinkedStack *s);
  * @param s
  */
 void DestroyLStack(LinkedStack *s);
-
-#define DATASTRUCTURE_LINKEDSTACK_H
 
 #endif //DATASTRUCTURE_LINKEDSTACK_H

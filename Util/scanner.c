@@ -1,12 +1,10 @@
-
 //
 // Created by carl- on 2020/2/14.
 //
 
-#include "scanner.h"
+
 #include <stdlib.h>
 #include <stdio.h>
-
 
 int sc_nextInt24() {
     //max 24 chars
