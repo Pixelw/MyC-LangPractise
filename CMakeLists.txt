@@ -1,9 +1,9 @@
 cmake_minimum_required(VERSION 3.15)
-project(DataStructure C)
+project(MyC C)
 
 set(CMAKE_C_STANDARD 99)
 
-add_executable(DataStructure
+add_executable(MyC
         Playground.c
         DataStructure/Impl/SeqList.c
         DataStructure/SeqStack.h
@@ -17,5 +17,8 @@ add_executable(DataStructure
         Util/status_bool.c
         Util/consoleutil.c
         Util/consoleutil.h
-        DataStructure/LinkedStack.c
-        DataStructure/LinkedStack.h)
+        DataStructure/Impl/LinkedStack.c
+        DataStructure/LinkedStack.h
+        DataStructure/BaseConvert.c
+        Util/scanner.c
+        Util/scanner.h)

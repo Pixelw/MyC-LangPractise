@@ -48,7 +48,17 @@ Data popLS(LinkedStack *s);
  */
 Data getLStackTop(LinkedStack *s);
 
+/**
+ * 打印栈
+ * @param s
+ */
 void showLStack(LinkedStack *s);
+
+/**
+ * 销毁栈
+ * @param s
+ */
+void DestroyLStack(LinkedStack *s);
 
 #define DATASTRUCTURE_LINKEDSTACK_H
 

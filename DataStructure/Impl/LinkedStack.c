@@ -4,8 +4,8 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-#include "LinkedStack.h"
-#include "../Util/status_bool.h"
+#include "../LinkedStack.h"
+#include "../../Util/status_bool.h"
 
 LinkedStack initLStack() {
     LinkedStack *s = (LinkedStack *) malloc(sizeof(LinkedStack));
@@ -57,6 +57,17 @@ void showLStack(LinkedStack *s) {
         printf("%d\t%c\n", i, node->data);
         node = node->prev;
     }
+}
+
+void DestroyLStack(LinkedStack *s) {
+    StackNode *node = s->top;
+    while (s->top){
+        s->top = node->prev;
+        free(node);
+        node=s->top;
+    }
+    free(s);
+    printf("wwww\n");
 }
 
 
