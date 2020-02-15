@@ -5,7 +5,7 @@
 #ifndef DATASTRUCTURE_SEQLIST_H
 #define DATASTRUCTURE_SEQLIST_H
 
-#define LIST_SIZE 10
+//#define LIST_SIZE 10
 
 typedef char Data;
 
@@ -19,7 +19,7 @@ typedef struct SeqList {
  * 初始化顺序表
  * @return 顺序表
  */
-SeqList initSeqList();
+SeqList initSeqList(int initsize);
 
 
 /**
@@ -46,6 +46,14 @@ int reInputList(SeqList *l);
 int insertList(SeqList *list, Data data, int position);
 
 /**
+ * 追加Data（字符）
+ * @param l
+ * @param data
+ * @return
+ */
+int appendSL(SeqList *l, Data data);
+
+/**
  * 删除第N个数据
  * @param l 顺序表
  * @param n
@@ -67,5 +75,12 @@ Data getDataN(SeqList *l, int position);
  * @param l 表
  */
 void showList(SeqList *l);
+
+/**
+ * 返回为字符串（指针）
+ * @param l 顺序表
+ * @return 字符指针用\0截断
+ */
+char* toCharArray(SeqList *l);
 
 #endif //DATASTRUCTURE_SEQLIST_H

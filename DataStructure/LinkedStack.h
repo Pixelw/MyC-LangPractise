@@ -19,7 +19,7 @@ typedef struct{
  * 初始化栈
  * @param s 栈
  */
-LinkedStack initLStack();
+LinkedStack *initLStack();
 /***
  * 判断栈是否空
  * @param s 栈

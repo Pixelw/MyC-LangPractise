@@ -7,15 +7,15 @@
 #include "../LinkedStack.h"
 #include "../../Util/status_bool.h"
 
-LinkedStack initLStack() {
+LinkedStack* initLStack() {
     LinkedStack *s = (LinkedStack *) malloc(sizeof(LinkedStack));
     s->top = NULL;  //置栈空
-    return *s;
+    return s;
 }
 
 int isLStackEmpty(LinkedStack *s) {
     if (s->top == NULL) {
-        printf("empty stack\n");
+//        printf("empty stack\n");
         return 1;
     }
     return 0;
@@ -52,20 +52,26 @@ Data getLStackTop(LinkedStack *s) {
 }
 
 void showLStack(LinkedStack *s) {
-    StackNode *node = s->top;
-    for (int i = 0; node; ++i) { //while node(node's prev is not null)
-        printf("%d\t%c\n", i, node->data);
-        node = node->prev;
+    if (isLStackEmpty(s)) {
+        printf("This stack is empty\n");
+    } else {
+        StackNode *node = s->top;
+        for (int i = 0; node; ++i) { //while node(node's prev is not null)
+            printf("%d\t%c\n", i, node->data);
+            node = node->prev;
+        }
+        printf("\n");
     }
 }
 
 void DestroyLStack(LinkedStack *s) {
     StackNode *node = s->top;
-    while (s->top){
+    while (node) {
         s->top = node->prev;
         free(node);
-        node=s->top;
+        node = s->top;
     }
+//    free(s->top);
     free(s);
     printf("wwww\n");
 }

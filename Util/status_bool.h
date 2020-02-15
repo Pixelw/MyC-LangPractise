@@ -18,6 +18,7 @@ typedef int Status;
 #define _OK on_success()  //1
 #define _ERROR on_error() //-1
 #define _OVERFLOW on_overflow() //-2
+#define _ERRNULL on_errnull() //NULL
 
 int on_success();
 
@@ -28,5 +29,7 @@ int on_success();
 int on_error();
 
 int on_overflow();
+
+void *on_errnull();
 
 #endif //DATASTRUCTURE_STATUS_BOOL_H

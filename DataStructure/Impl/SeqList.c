@@ -3,21 +3,21 @@
 #include "../SeqList.h"
 #include "../../Util/status_bool.h"
 
-SeqList initSeqList() {
-    int size = LIST_SIZE * sizeof(Data);
-    Data *base = (Data *) malloc(LIST_SIZE * sizeof(Data));
+SeqList initSeqList(int initsize) {
+    int size = initsize * sizeof(Data);
+    Data *base = (Data *) malloc(initsize * sizeof(Data));
     int length = 0;
     SeqList seqList = {base, length, size};
     return seqList;
 }
 
 int extendList(SeqList *list) {
-    Data *newBase = (Data *) realloc(list->base, (list->size + LIST_SIZE * sizeof(Data)));
+    Data *newBase = (Data *) realloc(list->base, (list->size + 10 * sizeof(Data)));
     if (!newBase) {
         return _ERROR;
     }
     list->base = newBase;
-    list->size += LIST_SIZE;
+    list->size += 10;
     return list->size;
 }
 
@@ -32,6 +32,7 @@ int reInputList(SeqList *l) {
                 return _ERROR;
             }
         }
+        //incompatible with pointer
         *(l->base + position) = ch;
         l->length++;
         position++;
@@ -82,4 +83,20 @@ void showList(SeqList *l) {
 
 Data getDataN(SeqList *l, int position) {
     return *(l->base + position);
+}
+
+int appendSL(SeqList *l, Data data) {
+    if (l->length * sizeof(data) >= l->size) {
+        if (extendList(l) <= 0) {
+            return _ERROR;
+        }
+    }
+    *(l->base + l->length) = data;
+    l->length++;
+    return l->length;
+}
+
+char *toCharArray(SeqList *l) {
+    appendSL(l,'\0');   //cut seqlist
+    return l->base; //then return
 }

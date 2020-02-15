@@ -21,3 +21,9 @@ int on_overflow() {
     return OVERFLOW;
 }
 
+void *on_errnull() {
+    enum console_color red = Red;
+    printf_in_color_win(red, "error occurred\n");
+    return NULL;
+}
+
