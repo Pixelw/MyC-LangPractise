@@ -2,10 +2,9 @@
 // Created by carl- on 2020/2/14.
 //
 #include <stdio.h>
-#include <stdlib.h>
-#include "LinkedStack.h"
-#include "SeqList.h"
-#include "../Util/status_bool.h"
+#include "../LinkedStack.h"
+#include "../SeqList.h"
+#include "../../Util/status_bool.h"
 
 char *baseConvert(long long number, int base) {
     if (base < 2 || base > 16) {

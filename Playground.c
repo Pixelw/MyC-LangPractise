@@ -2,6 +2,6 @@
 #include <stdio.h>
 
 int main() {
-    char* string = baseConvert(42949672888800,16);
+    char* string = baseConvert(255,2);
     printf("%s\n",string);
 }

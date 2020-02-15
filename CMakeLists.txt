@@ -19,6 +19,6 @@ add_executable(MyC
         Util/consoleutil.h
         DataStructure/Impl/LinkedStack.c
         DataStructure/LinkedStack.h
-        DataStructure/BaseConvert.c
+        DataStructure/Impl/BaseConvert.c
         Util/scanner.c
         Util/scanner.h DataStructure/BaseConvert.h)
