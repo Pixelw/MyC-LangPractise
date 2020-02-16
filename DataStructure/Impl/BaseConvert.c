@@ -6,8 +6,8 @@
 #include "../SeqList.h"
 #include "../../Util/status_bool.h"
 
-char *baseConvert(long long number, int base) {
-    if (base < 2 || base > 16) {
+char *baseConvert(unsigned long long number, int base) {
+    if (base < 2 || base > 62) {
         return _ERRNULL;
     }
     if (number == 0) {
@@ -19,9 +19,8 @@ char *baseConvert(long long number, int base) {
         return _ERRNULL;
     }
     while (number) {  //while number != 0
-        if (pushLS(ls, number % base)) {
-            number = number / base;
-        }
+        pushLS(ls, number % base);
+        number = number / base;
     }
     SeqList seqList = initSeqList(12);
     SeqList *result = &seqList;
@@ -29,8 +28,10 @@ char *baseConvert(long long number, int base) {
         int raw = popLS(ls);   //number is stored in data(char)
         if (raw >= 0 && raw < 10) {    //convert int to char
             raw += 48; //ASCII 0~9==48~57
-        } else if (raw > 10 && raw <= 15) {
-            raw += 87; //ASCII a~f==97~102
+        } else if (raw > 10 && raw <= 35) {
+            raw += 87; //ASCII a~z==97~122
+        } else if (raw > 35 && raw <= 61) {
+            raw += 29;  //ASCII A~Z==65~90
         } else {
             return _ERRNULL;
         }
