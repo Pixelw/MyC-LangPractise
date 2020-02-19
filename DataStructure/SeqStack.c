@@ -3,8 +3,8 @@
 //
 
 #include <stdio.h>
-#include "../SeqStack.h"
-#include "../../Util/status_bool.h"
+#include "SeqStack.h"
+#include "../Util/status_bool.h"
 
 void initSStack(SeqStack *s) {
     s->top = -1;

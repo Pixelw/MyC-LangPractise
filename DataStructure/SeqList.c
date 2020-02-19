@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <malloc.h>
-#include "../SeqList.h"
-#include "../../Util/status_bool.h"
+#include "SeqList.h"
+#include "../Util/status_bool.h"
 
 SeqList initSeqList(int initsize) {
     int size = initsize * sizeof(Data);

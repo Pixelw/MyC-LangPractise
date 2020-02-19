@@ -34,6 +34,8 @@ void printf_in_color_win(enum console_color color, char *str);
 
 void printf_in_red_ansi(char *str);
 
+char *str_joint(char *a, char *b);
+
 #define DATASTRUCTURE_PRINTINCOLOR_H
 
 #endif //DATASTRUCTURE_PRINTINCOLOR_H

@@ -4,8 +4,8 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-#include "../SinglyLinkedList.h"
-#include "../../Util/status_bool.h"
+#include "SinglyLinkedList.h"
+#include "../Util/status_bool.h"
 
 Node *makeNewNode() {
     Node *pNode = (Node *) malloc(sizeof(Node));

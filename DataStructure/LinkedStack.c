@@ -4,8 +4,8 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-#include "../LinkedStack.h"
-#include "../../Util/status_bool.h"
+#include "LinkedStack.h"
+#include "../Util/status_bool.h"
 
 LinkedStack* initLStack() {
     LinkedStack *s = (LinkedStack *) malloc(sizeof(LinkedStack));
